@@ -24,7 +24,6 @@ def accept_file(conn):
     data = conn.recv(1024)
     while data:
         output.write(data)
-        print(data)
         try:
             data = conn.recv(1024)
         except socket.timeout:
