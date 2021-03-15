@@ -41,7 +41,7 @@ while True:
     data = conn.recv(1024)
     fileName = str(data)
     time.sleep(1)
-    accept = input("Client attempting to send file:" + data + "\nAccept file? Y/N")
+    accept = input("Client attempting to send file:" + str(data,encoding='utf8') + "\nAccept file? Y/N")
     if accept == "Y":
         accept_file(fileName, addr)
     else:
