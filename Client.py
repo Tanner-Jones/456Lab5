@@ -19,6 +19,7 @@ while True:
 
     sock2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock2.bind((HOSTNAME, TCP_PORT_RECEIVE))
+    print("Listening for response")
     sock2.listen()
     conn, addr = sock2.accept()
     data = conn.recvfrom(1024)
