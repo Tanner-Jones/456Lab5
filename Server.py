@@ -25,8 +25,12 @@ def accept_file(conn):
     while data:
         output.write(data)
         print(data)
-        data = conn.recv(1024)
-
+        try:
+            data = conn.recv(1024)
+        except socket.timeout:
+            break
+        except socket.error:
+            break
     time.sleep(1)
     conn.sendall(b'File received successfully')
 
@@ -44,7 +48,7 @@ while True:
     data = conn.recv(1024)
     fileName = str(data)
     time.sleep(1)
-    accept = input("Client attempting to send file:" + str(data,encoding='utf8') + "\nAccept file? Y/N")
+    accept = input("Client attempting to send file:" + str(data,encoding='utf8') + "\nAccept file? Y/N\n")
     if accept == "Y":
         accept_file(conn)
     else:

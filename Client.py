@@ -26,7 +26,7 @@ while True:
             sock.sendall(message)
             full_file = full_file[1024:]
         data = sock.recvfrom(1024)
-        print(data)
+        print(data[0])
         break
     else:
         print("Message was rejected, try again later please")
