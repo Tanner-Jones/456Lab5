@@ -17,9 +17,7 @@ while True:
     sock.sendall(MESSAGE)
     print(HOSTNAME)
     print("Listening for response")
-    sock.listen()
-    conn, addr = sock.accept()
-    data = conn.recvfrom(1024)
+    data = sock.recvfrom(1024)
     if data == b'Message Accepted':
         file = open(fileName, 'rb')
         full_file = bytearray(file)

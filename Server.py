@@ -16,20 +16,18 @@ sock.bind((TCP_IP, TCP_PORT_RECEIVE))
 message_list = []
 
 
-def accept_file(fileName, addr):
+def accept_file(conn):
     time.sleep(1)
-    sock.sendall(b'Message Accepted')
-    output = open(fileName, 'w')
+    conn.sendall(b'Message Accepted')
+    output = open("output.txt", 'w')
     time.sleep(1)
     while True:
         data = conn.recv(1024)
-        output.write(data)
+        print(data)
 
-def decline_file(addr):
+def decline_file(conn):
     time.sleep(1)
-    sock2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock2.bind((addr, TCP_PORT_SEND))
-    sock2.sendall(b'Message Rejected')
+    conn.sendall(b'Message Rejected')
 
 
 
@@ -43,9 +41,9 @@ while True:
     time.sleep(1)
     accept = input("Client attempting to send file:" + str(data,encoding='utf8') + "\nAccept file? Y/N")
     if accept == "Y":
-        accept_file(fileName, sock)
+        accept_file(conn)
     else:
-        decline_file(addr)
+        decline_file(conn)
 
 
 
