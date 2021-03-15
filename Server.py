@@ -16,11 +16,12 @@ sock.bind((TCP_IP, TCP_PORT_RECEIVE))
 message_list = []
 
 
-def accept_file(conn):
+def accept_file(fileName, conn):
     time.sleep(1)
     conn.sendall(b'Message Accepted')
-    output = open("output.txt", 'wb')
+    output = open(fileName, 'wb')
     time.sleep(1)
+    conn.settimeout(2)
     data = conn.recv(1024)
     while data:
         output.write(data)
@@ -43,13 +44,12 @@ while True:
     #Loop to wait for received messages
     sock.listen()
     conn, addr = sock.accept()
-    conn.settimeout(10)
     data = conn.recv(1024)
     fileName = str(data)
     time.sleep(1)
     accept = input("Client attempting to send file:" + str(data,encoding='utf8') + "\nAccept file? Y/N\n")
     if accept == "Y":
-        accept_file(conn)
+        accept_file(fileName, conn)
     else:
         decline_file(conn)
 

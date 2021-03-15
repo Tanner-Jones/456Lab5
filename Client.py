@@ -26,9 +26,11 @@ while True:
             sock.sendall(message)
             full_file = full_file[1024:]
         data = sock.recvfrom(1024)
-        print(str(data[0]))
+        print(data[0].decode("utf-8"))
+        sock.close()
         break
     else:
         print("Message was rejected, try again later please")
+        sock.close()
         break
 
