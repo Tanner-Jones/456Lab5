@@ -22,7 +22,7 @@ def accept_file(fileName, conn):
     output = open(fileName, 'wb')
     time.sleep(1)
     conn.settimeout(2)
-    print("Waiting for ")
+    print("Waiting for Connection:")
     data = conn.recv(1024)
     while data:
         output.write(data)
