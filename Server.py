@@ -45,7 +45,7 @@ while True:
     sock.listen()
     conn, addr = sock.accept()
     data = conn.recv(1024)
-    fileName = str(data)
+    fileName = data.decode("utf-8")
     time.sleep(1)
     accept = input("Client attempting to send file:" + str(data,encoding='utf8') + "\nAccept file? Y/N\n")
     if accept == "Y":
