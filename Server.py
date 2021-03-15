@@ -17,8 +17,8 @@ message_list = []
 
 
 def accept_file(fileName, addr):
+    time.sleep(1)
     sock2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    print(addr)
     sock2.bind((addr[0], TCP_PORT_SEND))
     sock2.sendall(b'Message Accepted')
     output = open(fileName, 'w')
@@ -28,6 +28,7 @@ def accept_file(fileName, addr):
         output.write(data)
 
 def decline_file(addr):
+    time.sleep(1)
     sock2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock2.bind((addr, TCP_PORT_SEND))
     sock2.sendall(b'Message Rejected')
