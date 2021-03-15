@@ -21,7 +21,7 @@ def accept_file(conn):
     conn.sendall(b'Message Accepted')
     output = open("output.txt", 'w')
     time.sleep(1)
-    while True:
+    while data:
         data = conn.recv(1024)
         print(data)
 
