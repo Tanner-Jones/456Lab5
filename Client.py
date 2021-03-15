@@ -15,12 +15,11 @@ while True:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect((TCP_IP, TCP_PORT_SEND))
     sock.sendall(MESSAGE)
-    print(HOSTNAME)
-    print("Listening for response")
     data = sock.recvfrom(1024)
     if data == b'Message Accepted':
         file = open(fileName, 'rb')
         full_file = bytearray(file)
+        print(full_file)
         while len(full_file) > 0:
             message = bytes(full_file[0:1023])
             sock.sendall(message)
