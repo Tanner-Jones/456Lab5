@@ -12,16 +12,13 @@ while True:
     MESSAGE = bytes(fileName, encoding='utf8')
 
 
-    sock = socket.socket(socket.AF_INET, # Internet
-                     socket.SOCK_STREAM)
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect((TCP_IP, TCP_PORT_SEND))
     sock.sendall(MESSAGE)
-
-    sock2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock2.bind((HOSTNAME, TCP_PORT_RECEIVE))
+    print(HOSTNAME)
     print("Listening for response")
-    sock2.listen()
-    conn, addr = sock2.accept()
+    sock.listen()
+    conn, addr = sock.accept()
     data = conn.recvfrom(1024)
     if data == b'Message Accepted':
         file = open(fileName, 'rb')
