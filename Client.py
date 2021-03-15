@@ -16,13 +16,11 @@ while True:
     sock.connect((TCP_IP, TCP_PORT_SEND))
     sock.sendall(MESSAGE)
     data = sock.recvfrom(1024)
-    print(data)
     if data[0] == b'Message Accepted':
         file = open(fileName, 'rb')
-        print(file)
+        print(str(file))
         full_file = bytearray()
         full_file.extend(file)
-        print(file)
         while len(full_file) > 0:
             message = bytes(full_file[0:1023])
             sock.sendall(message)
