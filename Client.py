@@ -19,7 +19,7 @@ while True:
     print(data)
     if data[0] == b'Message Accepted':
         file = open(fileName, 'rb')
-        full_file = bytearray([file])
+        full_file = file.
         print(full_file)
         while len(full_file) > 0:
             message = bytes(full_file[0:1023])
