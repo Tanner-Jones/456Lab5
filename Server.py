@@ -21,15 +21,14 @@ def accept_file(conn):
     conn.sendall(b'Message Accepted')
     output = open("output.txt", 'wb')
     time.sleep(1)
-    while True:
+    data = conn.recv(1024)
+    while data:
+        output.write(data)
+        print(data)
         data = conn.recv(1024)
-        if data:
-            output.write(data)
-            print(data)
-        else:
-            time.sleep(1)
-            conn.sendall(b'File received successfully')
-            break
+
+    time.sleep(1)
+    conn.sendall(b'File received successfully')
 
 def decline_file(conn):
     time.sleep(1)
