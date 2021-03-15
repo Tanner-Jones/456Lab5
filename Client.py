@@ -21,6 +21,7 @@ while True:
         contents = file.read()
         full_file = bytearray(contents)
         while len(full_file) > 0:
+            print(len(full_file))
             message = bytes(full_file[0:1023])
             sock.sendall(message)
             full_file = full_file[1024:]
