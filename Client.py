@@ -19,6 +19,7 @@ while True:
     print(data)
     if data[0] == b'Message Accepted':
         file = open(fileName, 'rb')
+        print(file)
         full_file = bytearray()
         full_file.extend(file)
         print(file)
