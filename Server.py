@@ -41,7 +41,7 @@ while True:
     #Loop to wait for received messages
     sock.listen()
     conn, addr = sock.accept()
-
+    conn.settimeout(10)
     data = conn.recv(1024)
     fileName = str(data)
     time.sleep(1)
