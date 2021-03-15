@@ -27,6 +27,7 @@ def accept_file(conn):
             output.write(data)
             print(data)
         else:
+            time.sleep(1)
             conn.sendall(b'File received successfully')
             break
 
