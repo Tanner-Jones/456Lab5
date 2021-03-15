@@ -9,7 +9,7 @@ TCP_PORT_RECEIVE = 4444
 
 while True:
     fileName = sys.argv[2]
-    MESSAGE = bytes(fileName)
+    MESSAGE = bytes(fileName, encoding='utf8')
 
 
     sock = socket.socket(socket.AF_INET, # Internet
