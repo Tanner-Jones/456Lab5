@@ -18,9 +18,7 @@ while True:
     data = sock.recvfrom(1024)
     if data[0] == b'Message Accepted':
         file = open(fileName, 'rb')
-        print(str(file))
-        full_file = bytearray()
-        full_file.extend(file)
+        print(file.read())
         while len(full_file) > 0:
             message = bytes(full_file[0:1023])
             sock.sendall(message)
