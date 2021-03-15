@@ -16,6 +16,7 @@ while True:
     sock.connect((TCP_IP, TCP_PORT_SEND))
     sock.sendall(MESSAGE)
     data = sock.recvfrom(1024)
+    print(data)
     if data == b'Message Accepted':
         file = open(fileName, 'rb')
         full_file = bytearray(file)
