@@ -26,4 +26,5 @@ while True:
             full_file = full_file[1024:]
     else:
         print("Message was rejected, try again later please")
+        break
 
